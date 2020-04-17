@@ -168,6 +168,10 @@ i {
     transition: background, .3s;
 }
 
+.user:last-child {
+    border-bottom: none;
+}
+
 .user-details {
     flex-grow: 1;
 }
