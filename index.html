@@ -6,7 +6,7 @@
     <title>Whatsapp web</title>
     <link rel="icon" href="assets/img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/afce777129.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body class="flex-row">
@@ -144,6 +144,22 @@
             <!-- Chat window -->
             <main class="chat-main">
 
+                <!-- Da togglare con JS in base alla chat aperta -->
+                <div class="user-chat flex-column">
+                    <div class="message sent flex-column">
+                        <span class="message-text">Ciao come stai?</span>
+                        <span class="message-time"> 15:30</span>
+                    </div>
+                    <div class="message received flex-column">
+                        <span class="message-text">Tutto bene, e tu?</span>
+                        <span class="message-time"> 15:51</span>
+                    </div>
+    
+                    <div class="message sent flex-column">
+                        <span class="message-text">Na favola</span>
+                        <span class="message-time"> 15:57</span>
+                    </div>
+                </div>
             </main>
 
             <!-- Message input -->
@@ -151,11 +167,21 @@
                 <i class="far fa-smile"></i>
                 <input type="text" placeholder="Scrivi un messaggio">
                 <i class="fas fa-microphone"></i>
+
+                <!-- Nascosta, visibile con jQuery -->
+                <i class="fas fa-paper-plane"></i>
             </footer>
         </section>
         
     </main>
 
+    <!-- Templates -->
+    <div class="templates">
+        <div class="message sent flex-column">
+            <span class="message-text"></span>
+            <span class="message-time"></span>
+        </div>
+    </div>
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="assets/js/main.js"></script>
