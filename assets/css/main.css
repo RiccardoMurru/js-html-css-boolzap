@@ -1,0 +1,69 @@
+/* General */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+    height: 100vh;
+    background-image: linear-gradient(
+        180deg,
+        #009588 0px,
+        #009588 15%,
+        #dadbd5 15%,
+        #dadbd5 100%
+    );
+}
+
+
+/* Utilities */
+.flex {
+    display: flex;
+}
+
+/* App styles */
+.app {
+    width: 80%;
+    height: 95%;
+    min-width: 800px;
+    background: #fff;
+
+}
+
+/* Side list style */
+.side-list {
+    width: 30%;
+    height: 100%;
+    background: #ccc;
+}
+
+.side-header {
+    height: 60px;
+    background: #bbb;
+}
+
+/* Chat window style */
+.chat-window {
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+    background: #666;
+}
+
+.chat-header {
+    height: 60px;
+    background: #555;
+}
+
+.chat-main {
+    flex-grow: 1;
+}
+
+.chat-footer {
+    height: 60px;
+    background: #555;
+}
