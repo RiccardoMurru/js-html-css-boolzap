@@ -128,8 +128,17 @@
 
         <!-- Main window -->
         <section class="chat-window flex-column">
-            <header class="chat-header">
-
+            <header class="chat-header flex-row">
+                <img class="avatar avatar-small" src="assets/img/avatar_1.jpg" alt="contact avatar">
+                <div class="contact-details flex-column">
+                    <span class="user-name">Michele</span>
+                    <span class="user-text">Ultimo acesso alle <span>15.30</span></span>
+                </div>
+                <div class="icons">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-paperclip"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
             </header>
             
             <!-- Chat window -->
@@ -138,8 +147,10 @@
             </main>
 
             <!-- Message input -->
-            <footer class="chat-footer">
-
+            <footer class="chat-footer flex-row">
+                <i class="far fa-smile"></i>
+                <input type="text" placeholder="Scrivi un messaggio">
+                <i class="fas fa-microphone"></i>
             </footer>
         </section>
         
