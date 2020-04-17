@@ -4,27 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whatsapp web</title>
+    <link rel="icon" href="assets/img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/afce777129.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
-<body class="flex">
+<body class="flex-row">
     
-    <section class="app flex">
+    <!-- App -->
+    <section class="app flex-row">
         
-        <aside class="side-list">
-            <header class="side-header">
-
+        <!-- User list -->
+        <aside class="side-list flex-column">
+            <header class="side-header flex-row">
+                <img class="avatar" src="assets/img/avatar_io.jpg" alt="my avatar">
+                
+                <div class="icons">
+                    <i class="fas fa-circle-notch"></i>
+                    <i class="fas fa-comment-alt"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
             </header>
+
+            <!-- Settings & Search bar -->
+            <section class="side-options">
+                <div class="alerts flex-row">
+                    <div class="icons">
+                        <i class="fas fa-bell-slash"></i>
+                    </div>
+                    <div class="text float-column">
+                        <span class="block">Ricevi notifiche di nuovi messaggi</span>
+                        <span class="block underline">Attiva notifiche desktop</span>
+                    </div>
+                </div>
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text">
+                </div>
+            </section>
+            <main class="side-user-list">
+
+            </main>
         </aside>
-        <section class="chat-window flex">
+
+        <!-- Main window -->
+        <section class="chat-window flex-column">
             <header class="chat-header">
 
             </header>
             
+            <!-- Chat window -->
             <main class="chat-main">
 
             </main>
 
+            <!-- Message input -->
             <footer class="chat-footer">
 
             </footer>

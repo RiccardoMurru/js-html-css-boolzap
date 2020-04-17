@@ -21,10 +21,32 @@ body {
 
 
 /* Utilities */
-.flex {
+.flex-row {
     display: flex;
 }
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.block {
+    display: block;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.float {
+    float: left;
+}
+
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}
 /* App styles */
 .app {
     width: 80%;
@@ -41,14 +63,57 @@ body {
     background: #ccc;
 }
 
+/* Side Header */
 .side-header {
+    justify-content: space-between;
+    align-items: center;
     height: 60px;
-    background: #bbb;
+    background: #eaeaea;
+    padding: 0 10px;
 }
 
+.avatar {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+
+}
+
+.icons i{
+    padding: 0 5px;
+    color: #aaa;
+}
+
+/* Side options */
+.alerts {
+    align-items: center;
+    height: 70px;
+    background: #8edafd;
+}
+
+.alerts .icons{
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #f2fbff;
+    border-radius: 50%;
+    margin: 0 20px;
+}
+
+.alerts .icons i {
+    color: #8edafd;
+}
+
+.alerts span {
+    line-height: 25px;
+}
+.alerts span.underline {
+    text-decoration: underline;
+}
 /* Chat window style */
 .chat-window {
-    flex-direction: column;
     width: 70%;
     height: 100%;
     background: #666;
