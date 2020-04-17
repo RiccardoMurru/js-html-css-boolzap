@@ -47,6 +47,10 @@ body {
     display: table;
     clear: both;
 }
+
+i {
+    color: #aaa;
+}
 /* App styles */
 .app {
     width: 80%;
@@ -81,7 +85,6 @@ body {
 
 .icons i{
     padding: 0 5px;
-    color: #aaa;
 }
 
 /* Side options */
@@ -91,6 +94,7 @@ body {
     background: #8edafd;
 }
 
+/* Alerts */
 .alerts .icons{
     font-size: 25px;
     width: 50px;
@@ -112,6 +116,35 @@ body {
 .alerts span.underline {
     text-decoration: underline;
 }
+
+/* Search bar */
+.search-bar {
+    height: 50px;
+    align-items: center;
+    background: #fff;
+}
+
+.search-bar input {
+    height: 76%;
+    flex-grow: 1;
+    margin-right: 2%;
+    border: 1px solid #eee;
+    border-left: none;
+    border-radius: 0 3px 3px 0;
+}
+
+.search-bar i {
+    flex-basis: 10%;
+    text-align: center;
+    padding: 10px;
+    margin-left: 2%;
+    border: 1px solid #eee;
+    border-right: none;
+    border-radius: 3px 0 0 3px;
+}
+
+
+
 /* Chat window style */
 .chat-window {
     width: 70%;
