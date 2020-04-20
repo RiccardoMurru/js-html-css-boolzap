@@ -3,14 +3,12 @@ $(document).ready(function () {
 
 // refs
 var messageInput = $('.chat-footer input');
-var micIcon = $('.chat-footer > .fa-microphone');
 var sendIcon = $('.chat-footer > .fa-microphone');
-var chat = $('.user-chat');
-// fake timestamp
-var timeStamp = getTime;
+var chat = $('.user-chat.active');
+var timeStamp = getTime();
+
 
 // aggiungere messaggio a chat
-
 // cambio icona 
 messageInput.on('focus blur', function() {
     sendIcon.toggleClass('fa-microphone fa-paper-plane');
@@ -19,9 +17,9 @@ messageInput.on('focus blur', function() {
 // invio messaggio da input
 messageInput.keyup(function(e) {
     if (e.which == 13) {
-        
         sendMessage();
-        $(this).val('');
+        // risposta automatica dopo 1 secondo
+        setTimeout(receiveBot, 1000);
     };
 });
 
@@ -29,23 +27,38 @@ messageInput.keyup(function(e) {
 // invio messaggio da click icona
 sendIcon.click(function() {
     sendMessage();
-    messageInput.val('');
+    // risposta automatica dopo 1 secondo
+    setTimeout(receiveBot, 1000);
 });
 
+
+
+
+/*************
+ * FUNZIONI
+ *************/
 
 // funzione per spedire messaggio
 function sendMessage() {
     var messageText = messageInput.val().trim();
 
     if (messageText.length > 0) {
-        var messageTemplate = $('.templates .message').clone();
-        messageTemplate.children('.message-text').append(messageText);
-        messageTemplate.children('.message-time').append(timeStamp);
+        var messageTemplate = $('.templates .message').clone().addClass('sent');
+        messageTemplate.children('.message-text').text(messageText);
+        messageTemplate.children('.message-time').text(timeStamp);
         chat.append(messageTemplate);
+        messageInput.val('');
 
     }
 };
 
+// funzione per risposta automatica
+function receiveBot() {
+    var messageTemplate = $('.templates .message').clone().addClass('received');
+    messageTemplate.children('.message-text').text('Ok');
+    messageTemplate.children('.message-time').text(timeStamp);
+    chat.append(messageTemplate);
+}
 
 // funzione per timestamp
 function getTime() {
