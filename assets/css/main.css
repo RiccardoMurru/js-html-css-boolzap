@@ -50,6 +50,7 @@ body {
 
 i {
     color: #aaa;
+    cursor: pointer;
 }
 
 .avatar {
@@ -111,6 +112,7 @@ i {
 }
 
 .alerts .icons i {
+    cursor: default;
     color: #8edafd;
 }
 
@@ -137,16 +139,18 @@ i {
 }
 
 .search-bar input {
-    height: 76%;
+    height: 75%;
     flex-grow: 1;
     margin-right: 2%;
     border: 1px solid #eee;
     border-left: none;
     border-radius: 0 3px 3px 0;
+    padding-left: 10px;
 }
 
-.search-bar i {
-    flex-basis: 10%;
+.search-bar label {
+    height: 75%;
+    line-height: 75%;
     text-align: center;
     padding: 10px;
     margin-left: 2%;
@@ -157,6 +161,7 @@ i {
 
 /* User list style */
 .side-user-list {
+    flex-grow: 1;
     overflow: auto;
 }
 
@@ -198,15 +203,18 @@ i {
     color: #aaa;
 }
 
-.user:hover,
-.user:focus {
+.user.active {
     background: #eaebeb;
 }
+.user:hover {
+    background: #ddd;
+}
+
+
 /* Chat window style */
 .chat-window {
     width: 70%;
     height: 100%;
-    background: #666;
 }
 
 /* Chat header */
@@ -226,6 +234,16 @@ i {
     padding: 5% 10%;
     overflow: auto;
 }
+
+.chat-main .user-chat {
+    display: none;
+}
+
+.user-chat.active {
+    display: flex;
+}
+
+
 
 /* Chat footer */
 .chat-footer {
@@ -257,7 +275,6 @@ i {
 
 .chat-footer i:last-of-type {
     display: none;      /*jQuery*/
-    cursor: pointer;
 }
 
 /* Messages styles */
@@ -267,23 +284,24 @@ i {
     justify-items: center;
     padding: 10px 10px 5px;
     border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 .message.received {
     align-self: flex-start;
     background: #fff;
-    margin-bottom: 10px;
 }
 
 .message.sent {
     background: #d5f9ba;
     align-self: flex-end;
-    margin-bottom: 10px;
 }
 
 .message-text {
     font-size: 14px;
     margin-bottom: 10px;
+    word-wrap: break-word;
+    line-height: 18px;
 }
 
 .message-time {
