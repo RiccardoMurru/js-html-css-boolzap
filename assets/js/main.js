@@ -6,6 +6,7 @@ var messageInput = $('.chat-footer input');
 var sendIcon = $('.chat-footer > .fa-microphone');
 var chat = $('.user-chat.active');
 var timeStamp = getTime();
+var searchBar = $('#search-input');
 
 
 // aggiungere messaggio a chat
@@ -31,6 +32,27 @@ sendIcon.click(function() {
     setTimeout(receiveBot, 1000);
 });
 
+// ricerca contatti in sidebar
+searchBar.keyup(function() {
+
+    var searchLetters = searchBar.val();
+    
+    $('.user-details .user-name').each(function() {
+        var contactName = $(this).text().toLowerCase();
+        
+        if (!contactName.includes(searchLetters)) {
+            $(this).parents('.user').hide();
+
+        } else if (contactName.includes(searchLetters)) {
+            $(this).parents('.user').show();
+
+        } else if (searchLetters == '') {
+            $(this).parents('.user').show();
+        }
+        
+    });
+
+});
 
 
 
@@ -58,7 +80,7 @@ function receiveBot() {
     messageTemplate.children('.message-text').text('Ok');
     messageTemplate.children('.message-time').text(timeStamp);
     chat.append(messageTemplate);
-}
+};
 
 // funzione per timestamp
 function getTime() {
@@ -75,8 +97,13 @@ function getTime() {
 
     return hours + ':' + mins;
 
-}
+};
 
+// funzione per ricerca contatti 
+function searchContact(text1, text2) {
+    return text1.includes(text2);
+
+};
 
 }); // end doc ready
 

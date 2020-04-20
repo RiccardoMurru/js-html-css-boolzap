@@ -38,16 +38,6 @@ body {
     display: inline-block;
 }
 
-.float {
-    float: left;
-}
-
-.clearfix::after {
-    content: '';
-    display: table;
-    clear: both;
-}
-
 i {
     color: #aaa;
     cursor: pointer;
