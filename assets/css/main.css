@@ -34,10 +34,6 @@ body {
     display: block;
 }
 
-.inline-block {
-    display: inline-block;
-}
-
 i {
     color: #aaa;
     cursor: pointer;
@@ -261,10 +257,6 @@ i {
     text-align: center;
     font-size: 20px;
     color: #818181;
-}
-
-.chat-footer i:last-of-type {
-    display: none;      /*jQuery*/
 }
 
 /* Messages styles */

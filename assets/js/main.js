@@ -9,51 +9,62 @@ var timeStamp = getTime();
 var searchBar = $('#search-input');
 
 
+
+
+// Selezione chat attiva 
+
+
 // aggiungere messaggio a chat
 // cambio icona 
 messageInput.on('focus blur', function() {
     sendIcon.toggleClass('fa-microphone fa-paper-plane');
+
 });
+
 
 // invio messaggio da input
 messageInput.keyup(function(e) {
-    if (e.which == 13) {
-        sendMessage();
-        // risposta automatica dopo 1 secondo
-        setTimeout(receiveBot, 1000);
+    var messageText = $(this).val().trim();
+
+    if (messageText.length > 0) {
+        if (e.which == 13) {
+            sendMessage();
+            // risposta automatica dopo 1 secondo
+            setTimeout(receiveBot, 1000);
+           
+        };
     };
 });
 
 
 // invio messaggio da click icona
 sendIcon.click(function() {
-    sendMessage();
-    // risposta automatica dopo 1 secondo
-    setTimeout(receiveBot, 1000);
+    var messageText = messageInput.val().trim();
+
+    if (messageText.length > 0) {
+        sendMessage();
+        // risposta automatica dopo 1 secondo
+        setTimeout(receiveBot, 1000);
+
+    };
 });
 
 // ricerca contatti in sidebar
 searchBar.keyup(function() {
-
-    var searchLetters = searchBar.val();
+    var searchLetters = $(this).val().toLowerCase().trim();
     
     $('.user-details .user-name').each(function() {
         var contactName = $(this).text().toLowerCase();
         
-        if (!contactName.includes(searchLetters)) {
+        if (contactName.includes(searchLetters)) {
+            $(this).parents('.user').show();
+
+        } else {
             $(this).parents('.user').hide();
 
-        } else if (contactName.includes(searchLetters)) {
-            $(this).parents('.user').show();
-
-        } else if (searchLetters == '') {
-            $(this).parents('.user').show();
-        }
-        
+        } 
     });
-
 });
-
 
 
 /*************
@@ -63,15 +74,15 @@ searchBar.keyup(function() {
 // funzione per spedire messaggio
 function sendMessage() {
     var messageText = messageInput.val().trim();
+    var messageTemplate = $('.templates .message').clone().addClass('sent');
 
-    if (messageText.length > 0) {
-        var messageTemplate = $('.templates .message').clone().addClass('sent');
-        messageTemplate.children('.message-text').text(messageText);
-        messageTemplate.children('.message-time').text(timeStamp);
-        chat.append(messageTemplate);
-        messageInput.val('');
+    messageTemplate.children('.message-text').text(messageText);
+    messageTemplate.children('.message-time').text(timeStamp);
+    chat.append(messageTemplate);
+    messageInput.val('');
 
-    }
+    // auto scroll
+    scroll();
 };
 
 // funzione per risposta automatica
@@ -80,6 +91,9 @@ function receiveBot() {
     messageTemplate.children('.message-text').text('Ok');
     messageTemplate.children('.message-time').text(timeStamp);
     chat.append(messageTemplate);
+
+    // auto scroll
+    scroll();
 };
 
 // funzione per timestamp
@@ -94,16 +108,17 @@ function getTime() {
         mins = '0' + mins;
     }
 
-
     return hours + ':' + mins;
-
 };
 
-// funzione per ricerca contatti 
-function searchContact(text1, text2) {
-    return text1.includes(text2);
-
+// funzione per scrollare all'aggiunta dei messaggi
+function scroll() {
+    var height = $('.user-chat').height();
+    $('.chat-main').animate({
+       scrollTop: height, 
+    }, 400);
 };
+
 
 }); // end doc ready
 
