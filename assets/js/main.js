@@ -4,15 +4,31 @@ $(document).ready(function () {
 // refs
 var messageInput = $('.chat-footer input');
 var sendIcon = $('.chat-footer > .fa-microphone');
-var chat = $('.user-chat.active');
+var chat = $('.user-chat');
 var timeStamp = getTime();
 var searchBar = $('#search-input');
+var user = $('.user');
 
 
 
 
 // Selezione chat attiva 
+user.click( function() {
 
+    // assegno attributo data-chat del contatto a variabile
+    var chatId = $(this).attr('data-chat');
+
+    // rimuovo classe active da tutte le chat e dai contatti
+    chat.removeClass('active');
+    user.removeClass('active');
+
+    
+    // aggiungo classe active alla chat con data-chat uguale a contatto
+    $('.user-chat[data-chat="' + chatId + '"]').addClass('active').show();
+    
+    // aggiungo classe active a contatto attivo
+    $(this).addClass('active');
+});
 
 // aggiungere messaggio a chat
 // cambio icona 
@@ -78,7 +94,7 @@ function sendMessage() {
 
     messageTemplate.children('.message-text').text(messageText);
     messageTemplate.children('.message-time').text(timeStamp);
-    chat.append(messageTemplate);
+    $('.user-chat.active').append(messageTemplate);
     messageInput.val('');
 
     // auto scroll
@@ -90,7 +106,7 @@ function receiveBot() {
     var messageTemplate = $('.templates .message').clone().addClass('received');
     messageTemplate.children('.message-text').text('Ok');
     messageTemplate.children('.message-time').text(timeStamp);
-    chat.append(messageTemplate);
+    $('.user-chat.active').append(messageTemplate);
 
     // auto scroll
     scroll();
