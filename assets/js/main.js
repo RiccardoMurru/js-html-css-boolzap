@@ -8,6 +8,7 @@ var chat = $('.user-chat');
 var timeStamp = getTime();
 var searchBar = $('#search-input');
 var user = $('.user');
+var contactHeaderName = $('.chat-header .contact-details .user-name');
 
 
 
@@ -17,6 +18,9 @@ user.click( function() {
 
     // assegno attributo data-chat del contatto a variabile
     var chatId = $(this).attr('data-chat');
+    // assegno attributo src dell'avatar a variabile
+    var imgSrc = $(this).children('.avatar').attr('src');
+    
 
     // rimuovo classe active da tutte le chat e dai contatti
     chat.removeClass('active');
@@ -26,8 +30,15 @@ user.click( function() {
     // aggiungo classe active alla chat con data-chat uguale a contatto
     $('.user-chat[data-chat="' + chatId + '"]').addClass('active').show();
     
+    // aggiungo dettagli contatto in header chat
+    contactHeaderName.text($(this).find('.user-name').text());
+    $('.chat-header .avatar').attr('src', imgSrc);
+   
+    
     // aggiungo classe active a contatto attivo
     $(this).addClass('active');
+
+    
 });
 
 // aggiungere messaggio a chat
