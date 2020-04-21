@@ -1,7 +1,9 @@
 $(document).ready(function () {
     
+/***********
+ * REFERENZE
+ ***********/
 
-// refs
 var messageInput = $('.chat-footer input');
 var sendIcon = $('.chat-footer > .fa-microphone');
 var chat = $('.user-chat');
@@ -11,6 +13,9 @@ var user = $('.user');
 var contactHeaderName = $('.chat-header .contact-details .user-name');
 
 
+/***********************
+ * SELEZIONE CHAT ATTIVA
+ ***********************/
 
 
 // Selezione chat attiva 
@@ -18,6 +23,7 @@ user.click( function() {
 
     // assegno attributo data-chat del contatto a variabile
     var chatId = $(this).attr('data-chat');
+    
     // assegno attributo src dell'avatar a variabile
     var imgSrc = $(this).children('.avatar').attr('src');
     
@@ -40,6 +46,12 @@ user.click( function() {
 
     
 });
+
+
+/****************
+ * INVIO MESSAGGI
+ ****************/
+
 
 // aggiungere messaggio a chat
 // cambio icona 
@@ -76,6 +88,12 @@ sendIcon.click(function() {
     };
 });
 
+
+/******************
+ * RICERCA CONTATTI
+ ******************/
+
+
 // ricerca contatti in sidebar
 searchBar.keyup(function() {
     var searchLetters = $(this).val().toLowerCase().trim();
@@ -92,6 +110,45 @@ searchBar.keyup(function() {
         } 
     });
 });
+
+
+
+
+/********************
+ * RIMUOVERE MESSAGGI
+ ********************/
+
+// mostrare icona in hover su messaggio
+$('body').on('mouseenter', '.message', function() { 
+    var optionIcon = $(this).children('i');
+    optionIcon.show();
+
+    // aprire box opzioni a click su icona
+    optionIcon.click(function() {
+
+        // cambio icona
+        $(this).toggleClass('fa-angle-up fa-angle-down');
+
+        // apro box opzioni
+        $(this).next('.message-options').toggle();
+
+    });
+});
+
+// rimuovere il messaggio
+$('body').on('click', '.message-options ul li.remove', function(){
+    
+    $(this).parents('.message').remove();
+});
+
+// nascondere icona 
+$('body').on('mouseleave', '.message', function() { 
+    
+    $(this).find('i').hide();
+});
+
+
+
 
 
 /*************
@@ -145,6 +202,7 @@ function scroll() {
        scrollTop: height, 
     }, 400);
 };
+
 
 
 }); // end doc ready

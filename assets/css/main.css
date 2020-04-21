@@ -260,6 +260,7 @@ i {
 
 /* Messages styles */
 .message {
+    position: relative;
     max-width: 400px;
     min-width: 200px;
     justify-items: center;
@@ -291,6 +292,44 @@ i {
     color: #aaa;
 }
 
+.message i {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    padding: 5px;
+    display: none;  /* jQuery */
+}
+
+.message .message-options {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+    min-height: 100%;
+    background: inherit;
+    filter: drop-shadow(0 0 2px #bbb);
+    padding: 5px 0;
+    display: none;  /* jQuery */
+}
+
+.message .message-options ul {
+    list-style: none;
+    font-size: 12px;
+    text-align: right;
+}
+
+.message .message-options ul li {
+  padding: 5px 10px;
+  opacity: .5;
+  transition: opacity .4s;
+  cursor: pointer;
+}
+
+.message .message-options ul li:hover {
+    opacity: 1;
+}
 
 /* templates */
 .templates {
